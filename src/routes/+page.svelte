@@ -22,27 +22,9 @@
             }
         };
     };
-    let avatar: string | ArrayBuffer | null;
-    let fileinput: string | undefined;
 
-	const onFileSelected =(e)=>{
-  let image = e.target.files[0];
-            let reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e => {
-                 avatar = e.target.result
-            };
-}
+
 </script>
-
-<div id="app">
-    <h1><strong>Get Boned</strong></h1>
-    <hr />
-    <h2>Upload a fossil for analysis</h2>
-    <div id="drag_box">
-        {#if avatar}
-            <img class="avatar" src={avatar} alt="d" />
-
 
 <div id="app" >
 
@@ -54,7 +36,7 @@
         <img class="avatar" src="{avatar}" alt="d" />
         {:else}
             <img class="avatar" src={logo} alt="" />
-        <img class="avatar" src="{logo}" alt="" />
+
         {/if}
     </div>
     <img
@@ -90,7 +72,6 @@
             <div class="pixel2">pixelated button #2<br/>with multiple lines</div>
         </div>
     </div>
-</div>
 
 <style>
     :global(body) {
@@ -118,7 +99,7 @@
 
     #app > hr {
         width: 25%;
-        color: "bc6c25";
+        color: #bc6c25;
     }
 
     .upload {
