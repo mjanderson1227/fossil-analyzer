@@ -47,6 +47,7 @@
     font-size: 1.25rem;
     font-family:'Delicious Handrawn'
  }
+ 
  .replies{
     color: blue;
     font-size: 1.4rem;
