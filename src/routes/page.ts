@@ -1,6 +1,7 @@
-export default async function handleImageSubmit(event: InputEvent) {
-	let target = event.target as HTMLInputElement;
-	let image = target.files?.item(0) as File;
+export default async function handleImageSubmit(files: FileList | null) {
+	if (!files)
+		return;
+	const image = files[0];
 	let reader = new FileReader();
 	reader.readAsDataURL(image);
 	reader.onload = (e: ProgressEvent<FileReader>) => {
@@ -9,7 +10,9 @@ export default async function handleImageSubmit(event: InputEvent) {
 			return
 		fetch('/api/sendimage', {
 			method: "POST",
-			body: image
+			body: JSON.stringify({
+				img: image
+			})
 		});
 	};
 }

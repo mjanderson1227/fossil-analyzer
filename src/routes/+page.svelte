@@ -1,6 +1,9 @@
 <script lang="ts">
-    import logo from "$lib/img/image_photo_icon.png";
-    import file from "$lib/img/file_folder.png";
+    import bonefile from "$lib/img/bonefile.svg";
+    import background from "$lib/img/background.svg";
+
+    import handleImageSubmit from "./page";
+    // import { onMount } from "svelte";
 
     let avatar: string, fileinput: HTMLInputElement;
 
@@ -22,24 +25,36 @@
             }
         };
     };
-
-
 </script>
 
-<div id="app" >
+<svelte:head>
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap"
+        rel="stylesheet"
+    />
+</svelte:head>
 
-    <h1><strong>What the Dino?!</strong></h1>
-    <hr width="25%" color="bc6c25"/>
-<!--    <h2>Upload a fossil  for analysis</h2>-->
-    <div id="drag_box" on:click={()=>{fileinput.click();}}>
-    {#if avatar}
-        <img class="avatar" src="{avatar}" alt="d" />
-        {:else}
-            <img class="avatar" src={logo} alt="" />
-
-        {/if}
+<div id="app">
+    <div class="title-bar">
+        <h1><strong>What the Dino?!</strong></h1>
     </div>
-    <img
+    <!--    <h2>Upload a fossil  for analysis</h2>-->
+    <button
+        id="drag_box"
+        aria-pressed="false"
+        on:click={() => {
+            fileinput.click();
+        }}
+    >
+        {#if avatar}
+            <img class="avatar" src={avatar} alt="d" />
+        {:else}
+            <img class="avatar" src={bonefile} alt="" />
+        {/if}
+    </button>
+    <!--   <img
         class="upload"
         src={file}
         alt=""
@@ -55,6 +70,7 @@
     >
         Choose Image
     </div>
+-->
     <input
         style="display:none"
         type="file"
@@ -63,32 +79,43 @@
         bind:this={fileinput}
     />
 
-<!--				<img class="upload" src={file} alt="" on:click={()=>{fileinput.click();}} />-->
-<!--        <div class="chan" on:click={()=>{fileinput.click();}}>Choose Image</div>-->
-        <input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-    </div>
-    <div class="container">
-        <div>
-            <div class="pixel2">pixelated button #2<br/>with multiple lines</div>
-        </div>
-    </div>
+    <!--				<img class="upload" src={file} alt="" on:click={()=>{fileinput.click();}} />-->
+    <!--        <div class="chan" on:click={()=>{fileinput.click();}}>Choose Image</div>-->
+    <input
+        style="display:none"
+        type="file"
+        accept=".jpg, .jpeg, .png"
+        on:change={(e) => onFileSelected(e)}
+        bind:this={fileinput}
+    />
+</div>
+<div class="submit-flex">
+    <button class="pixel2" on:click={() => handleImageSubmit(fileinput.files)}
+        >Analyze Fossil!</button
+    >
+</div>
 
 <style>
     :global(body) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
         height: 100vh;
-        background: linear-gradient(360deg, #283618, #fefae0);
+        background-image: url($lib/img/background.svg);
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
     }
     #drag_box {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 300px;
-        width: 550px;
+        height: 50vh;
+        width: 50vw;
         border: 4px dashed #bc6c25;
         border-radius: 10px;
-        margin: 10px;
-
-
+        margin: 10% 10%;
     }
     #app {
         display: flex;
@@ -96,53 +123,22 @@
         justify-content: center;
         flex-flow: column;
     }
-
-    #app > hr {
-        width: 25%;
-        color: #bc6c25;
+    #app > button {
+        background-color: rgba(255, 255, 255, 0.5);
     }
 
-    .upload {
-        display: flex;
-        height: 50px;
-        width: 50px;
-        cursor: pointer;
+    .title-bar > h1 {
     }
-    .upload:hover {
-        transform: scale(1.1);
-    }
+
     .avatar {
         display: flex;
         height: 300px;
         width: 300px;
     }
     h1 {
-        color: #BC6C25;
-        font-family: 'Press Start 2P';
-        color: #bc6c25;
-    }
-    h2 {
         color: #283618;
-        font-family: 'Press Start 2P';
+        font-family: "Press Start 2P";
     }
-    .chan {
-        color: #BC6C25;
-        font-family: 'Press Start 2P';
-        color: #bc6c25;
-    }
-    .chan:hover {
-        color: #283618;
-        cursor: pointer;
-    }
-    .container {
-        margin: 50px;
-        display: block;
-        width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-
     .pixel2 {
         outline: 0;
         grid-gap: 8px;
@@ -153,7 +149,6 @@
         cursor: pointer;
         display: inline-flex;
         flex-shrink: 0;
-        font-size: 16px;
         gap: 8px;
         justify-content: center;
         line-height: 1.5;
@@ -161,14 +156,13 @@
         padding: 12px 16px;
         text-decoration: none;
         text-overflow: ellipsis;
-        transition: all .14s ease-out;
+        transition: all 0.14s ease-out;
         white-space: nowrap;
 
         font-size: 25px;
         color: white;
-        height: auto;
-        margin: 10px;
-        font-family: 'VT323';
+        height: 90px;
+        font-family: "VT323";
 
         position: relative;
         display: inline-block;
@@ -188,23 +182,60 @@
     .pixel2:active {
         top: 2px;
         box-shadow: 4px 4px 0 #000;
-        transform: translate(-4px,-4px);
-
-
+        transform: translate(-4px, -4px);
     }
-    :focus-visible{
+    :focus-visible {
         outline-offset: 1px;
     }
 
     .pixel2 {
-        position: relative;
-        display: block;
-        margin: 10px;
-        font-family: 'VT323';
+        clip-path: polygon(
+            0px calc(100% - 20px),
+            4px calc(100% - 20px),
+            4px calc(100% - 12px),
+            8px calc(100% - 12px),
+            8px calc(100% - 8px),
+            12px calc(100% - 8px),
+            12px calc(100% - 4px),
+            20px calc(100% - 4px),
+            20px 100%,
+            calc(100% - 20px) 100%,
+            calc(100% - 20px) calc(100% - 4px),
+            calc(100% - 12px) calc(100% - 4px),
+            calc(100% - 12px) calc(100% - 8px),
+            calc(100% - 8px) calc(100% - 8px),
+            calc(100% - 8px) calc(100% - 12px),
+            calc(100% - 4px) calc(100% - 12px),
+            calc(100% - 4px) calc(100% - 20px),
+            100% calc(100% - 20px),
+            100% 20px,
+            calc(100% - 4px) 20px,
+            calc(100% - 4px) 12px,
+            calc(100% - 8px) 12px,
+            calc(100% - 8px) 8px,
+            calc(100% - 12px) 8px,
+            calc(100% - 12px) 4px,
+            calc(100% - 20px) 4px,
+            calc(100% - 20px) 0px,
+            20px 0px,
+            20px 4px,
+            12px 4px,
+            12px 8px,
+            8px 8px,
+            8px 12px,
+            4px 12px,
+            4px 20px,
+            0px 20px
+        );
+        font-family: "Press Start 2P";
         text-transform: uppercase;
-
-        font-size: 25px;
+        font-size: 2rem;
         color: white;
+        padding: 10px 10px;
+        background: black;
+        width: 550px;
+        z-index: 2;
+        border: 2px black;
     }
 
     .pixel2::before {
@@ -230,15 +261,16 @@
         background: black;
         z-index: -1;
     }
-
-    .pixel2 {
-        padding: 10px 10px;
-        position: relative;
-        background: black;
-        width: auto;
-        z-index: 2;
+    .submit-flex {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-
+    .title-bar > h1 {
+        text-shadow: 5px 5px black;
+        color: #283618;
+        margin: 0;
+        font-size: 4rem;
+    }
 </style>
-
- 
