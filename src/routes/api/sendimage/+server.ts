@@ -1,4 +1,4 @@
-import type { RequestEvent } from "@sveltejs/kit";
+import { redirect, type RequestEvent } from "@sveltejs/kit";
 
 interface ImageRequestJson {
 	img: string
@@ -25,8 +25,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
 			status: 400
 		});
 	}
-	
-	return new Response(responseString, {
-		status: res.status
-	});
+
+	event.cookies.set("server_data", responseString, {path: "/results"});
+	return redirect(303, "/results");
 }

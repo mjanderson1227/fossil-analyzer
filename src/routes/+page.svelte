@@ -1,10 +1,32 @@
 <script lang="ts">
     import bonefile from "$lib/img/bonefile.svg";
+    import { goto } from "$app/navigation";
 
-    import handleImageSubmit from "./page";
     // import { onMount } from "svelte";
 
     let avatar: string, fileinput: HTMLInputElement;
+
+    async function handleImageSubmit(files: FileList | null) {
+        if (!files) return;
+        const image = files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(image);
+        reader.onload = async (e: ProgressEvent<FileReader>) => {
+            const image = e.target?.result?.toString();
+
+            if (!image) {
+                console.error("Failed to get image");
+                return;
+            }
+
+            await fetch("/api/sendimage", {
+                method: "POST",
+                body: JSON.stringify({
+                    img: image,
+                }),
+            });
+        };
+    }
 
     const onFileSelected = (
         e: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -41,7 +63,7 @@
     </div>
     <!--    <h2>Upload a fossil  for analysis</h2>-->
     <button
-        id="drag_box"
+        id="drag-box"
         aria-pressed="false"
         on:click={() => {
             fileinput.click();
@@ -91,9 +113,10 @@
 <div class="submit-flex">
     <button
         class="pixel2"
-        on:click={() => {
-            handleImageSubmit(fileinput.files);
+        on:click={async () => {
+            await handleImageSubmit(fileinput.files);
             avatar = "";
+            goto("/results");
         }}>Analyze Fossil!</button
     >
 </div>
@@ -110,7 +133,7 @@
         background-position: center bottom;
         background-repeat: no-repeat;
     }
-    #drag_box {
+    #drag-box {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -128,9 +151,6 @@
     }
     #app > button {
         background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .title-bar > h1 {
     }
 
     .avatar {
