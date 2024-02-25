@@ -1,6 +1,5 @@
 <script lang="ts">
     import bonefile from "$lib/img/bonefile.svg";
-    import background from "$lib/img/background.svg";
 
     import handleImageSubmit from "./page";
     // import { onMount } from "svelte";
