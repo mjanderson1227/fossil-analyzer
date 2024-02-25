@@ -114,6 +114,7 @@
     <button
         class="pixel2"
         on:click={async () => {
+            document.cookie = "";
             await handleImageSubmit(fileinput.files);
             avatar = "";
             goto("/results");

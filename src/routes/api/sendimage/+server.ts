@@ -26,7 +26,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
 			status: 400
 		});
 	}
-
+	event.cookies.delete("server_data",{path: "/results"});
 	event.cookies.set("server_data", responseString, {path: "/results"});
 	event.cookies.set("prev_image", img, {path: "/results"});
 
