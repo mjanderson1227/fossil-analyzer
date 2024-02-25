@@ -1,17 +1,31 @@
 <script lang="ts">
     import type { ModelResponse } from "./types";
+    import { onMount } from "svelte";
 
     // Variable is loaded from the server
     export let data: ModelResponse;
 
-    import Sticky from "./guesses.svelte";
+    onMount(() => {
+        console.log(data);
+    });
+
+    import Guesses from "./guesses.svelte";
     import Pg1 from "./journalpg1.svelte";
 </script>
+
+<svelte:head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap"
+        rel="stylesheet"
+    />
+</svelte:head>
 
 <div class="wrapper">
     <div class="logo"></div>
     <div class="header"><h1><strong>What the Dino?!</strong></h1></div>
-    <div class="guesses"><Sticky /></div>
+    <div class="guesses"><Guesses listData={data} /></div>
     <div class="journal_page">
         <div class="pg1"><Pg1 /></div>
     </div>

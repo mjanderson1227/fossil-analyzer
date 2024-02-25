@@ -12,5 +12,7 @@ export async function load({cookies}: LoadCookies): Promise<ModelResponse> {
 		redirect(303, "/");
 	}
 
+	cookies.delete('server_data', { path: '/' });
+
 	return await JSON.parse(cookieString);
 }
