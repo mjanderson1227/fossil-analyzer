@@ -4,23 +4,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
 </svelte:head>
 <script>
-    //put your js here
+    let match0 = .97;
+    let match1 = .02;
+    let match2 = .01;
+    
 
 </script>
 
-<sticky class='sticky'>
-    <div class='head'>Results</div>
-    <div class='guesses'> 
-        <ul>guess 1:</ul>
-        <ul>guess 2:</ul>
-        <ul>guess 3:</ul>
-    </div>
+<sticky class='guesses'>
+    <div class='head'>Results:</div>
+    Stegosaurus Femur<br><center>97% match</center>
+            Velociraptor Skull<br><center>2% match</center>
+            Tyrannosaurus Rex Ribs<br><center>1% match</center>
 </sticky>
 
 <style>
-    .sticky{
-        font-family: 'Delicious Handrawn';
-    }
+
     
     .head {
         font-size: 3rem;
@@ -28,9 +27,11 @@
     }
 
     .guesses{
+        font-family: 'Delicious Handrawn';
         font-size: 2rem;
         list-style-type: circle;
         text-align: left;
+    
     }
 
 </style>
