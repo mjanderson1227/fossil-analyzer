@@ -1,22 +1,24 @@
 <script lang="ts">
     import type { ModelResponse } from "./types";
 
-    export let data: ModelResponse;
-
-    import { onMount } from "svelte";
-    onMount(() => {
-        console.log(data);
-    });
+<script lang='ts'>
+    import Sticky from './guesses.svelte';
+    import Pg1 from './journalpg1.svelte';
+   
 </script>
 
-<svelte:head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap"
-        rel="stylesheet"
-    />
-</svelte:head>
+    
+
+    <div class="wrapper">
+        <div class='logo'></div>
+        <div class='header'><h1><strong>What the Dino?!</strong></h1></div>
+        <div class='guesses'><Sticky /></div>
+        <div class='journal_page'> 
+           <div class='pg1'><Pg1 /></div> 
+        </div>
+    </div>
+      
+
 
 <div class="wrapper">
     <div class="logo"></div>
@@ -26,8 +28,10 @@
 </div>
 
 <style>
-    :global(body) {
-        height: 100vh;
+    :global(body){
+        
+        height:140vh;
+        width:90vw;
         /*background: linear-gradient(135deg, #1F2033, #4F505C)*/
         background-image: url($lib/img/background.svg);
         background-size: cover;
@@ -36,14 +40,15 @@
     }
     .wrapper {
         display: grid;
-
+        
+  
         height: 100vh;
         width: 50vw;
     }
     .logo {
         grid-column: 1;
-        grid-row: 1;
-        height: 18vh;
+        grid-row:1;
+        height: 1;
         width: 10vw;
 
         background-image: url($lib/img/fossil-illustration-2-svgrepo-com.svg);
@@ -68,28 +73,27 @@
     .journal-page {
         grid-column: 6/8;
         grid-row: 2;
-        height: 120vh;
-        width: 75vw;
+        height: 60em;
+        width: 65em;
+        
         background-image: url($lib/img/journal.svg);
         background-size: cover;
         background-position: center bottom;
         background-repeat: no-repeat;
+        display: grid;
     }
-
+    
+   .pg1 {
+        grid-column: 1;
+        grid-row: 2;
+   }
+   
+    
     h1 {
         color: #283618;
         font-family: "Press Start 2P";
     }
+    
 
-    :focus-visible {
-        outline-offset: 1px;
-    }
 
-    .title-bar > h1 {
-        text-shadow: 2px 2px black;
-        color: #283618;
-        margin: 0;
-        font-size: 2rem;
-        float: left;
-    }
 </style>

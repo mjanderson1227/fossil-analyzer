@@ -127,7 +127,10 @@
         align-items: center;
         justify-content: center;
         flex-flow: column;
-        height: 100vh;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 2% 0 15%;
         background-image: url($lib/img/background.svg);
         background-size: cover;
         background-position: center bottom;
@@ -155,12 +158,15 @@
 
     .avatar {
         display: flex;
-        height: 300px;
-        width: 300px;
+        margin: -1%;
+        height: 100%;
+        width: 100%;
+        object-fit: scale-down;
     }
     h1 {
         color: #283618;
         font-family: "Press Start 2P";
+        text-align: center;
     }
     .pixel2 {
         outline: 0;
@@ -176,7 +182,6 @@
         justify-content: center;
         line-height: 1.5;
         overflow: hidden;
-        padding: 12px 16px;
         text-decoration: none;
         text-overflow: ellipsis;
         transition: all 0.14s ease-out;
