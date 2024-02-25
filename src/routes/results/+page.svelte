@@ -5,20 +5,17 @@
 </svelte:head>
 
 <script lang='ts'>
-    let colors = [
-		"#4F505C",
-		"#272833"
-	]
-	let degstring = '45deg'
+   import logo from '$lib/img/fossil-illustration-2-svgrepo-com.svg'
 </script>
 
-<nav> 
-    <a href="/">home</a>
-</nav>
-<h1> Results:</h1>
-<div
+<div class='header'>
+    <a
+    <img src={logo} alt="logo"/>
+    <h1>WHAT THE DINO?!</h1>  
+</div>
 
-></div>
+  
+
 
 <style>
     :global(body){
@@ -26,12 +23,16 @@
         background: linear-gradient(135deg, #1F2033, #4F505C)
     }
     
-    
-    h1
+   
+    .header
     {
         font-family: 'Press Start 2P';
-        color:white
+        color:white;
+        font-size:2rem;
+        
     }
+   
+    
 
 
 </style>
