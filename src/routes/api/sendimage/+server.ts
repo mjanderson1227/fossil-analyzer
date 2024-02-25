@@ -8,8 +8,10 @@ export async function POST(event: RequestEvent): Promise<Response> {
 	const { img } = await event.request.json() as ImageRequestJson;
 	const res = await fetch('http://100.76.201.27:81/dino', {
 		method: "POST",
-		mode: "cors",
-		body: btoa(img).split(",")[1],
+		headers: {
+			"Content-Type": "text/plain; charset=utf-8",
+		},
+		body: "Hello",
 	});
 	console.log(res);
 	return new Response("ok", {

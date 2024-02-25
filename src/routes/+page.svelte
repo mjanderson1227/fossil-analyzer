@@ -90,8 +90,12 @@
     />
 </div>
 <div class="submit-flex">
-    <button class="pixel2" on:click={() => handleImageSubmit(fileinput.files)}
-        >Analyze Fossil!</button
+    <button
+        class="pixel2"
+        on:click={() => {
+            handleImageSubmit(fileinput.files);
+            avatar = "";
+        }}>Analyze Fossil!</button
     >
 </div>
 
