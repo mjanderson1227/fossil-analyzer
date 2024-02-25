@@ -26,10 +26,14 @@
 
 <style>
     :global(body){
-        
-        height:140vh;
-        width:90vw;
-        /*background: linear-gradient(135deg, #1F2033, #4F505C)*/
+
+        display: flex;
+        align-items: left;
+        justify-content: center;
+        flex-flow: column;
+        height: 100%;
+        overflow: hidden;
+        margin: 2% 0 15%;
         background-image: url($lib/img/background.svg);
         background-size: cover;
         background-position: center bottom;
@@ -39,45 +43,48 @@
     .wrapper {
         display: grid;
         
-  
-        height: 100vh;
-        width: 50vw;
+
+       
         
     }
     .logo {
         grid-column: 1;
         grid-row:1;
-        height: 1;
-        width: 10vw;
-        
+        height: 10vh;
+        width: 10vh;
+        margin-left: 2vw;
+        margin-right: 2vw;
         background-image: url($lib/img/fossil-illustration-2-svgrepo-com.svg);
-        background-size: cover;
+        background-size: 100%;
         background-position: center center;
         background-repeat: no-repeat;
     }
     .header {
-        grid-column: 2/6;
-        grid-row:1
+        grid-column: 2;
+        grid-row:1;
+        vertical-align: center;
     }
     .guesses {
-        grid-column: 1/6;
-        grid-row: 2;
-        height:20rem;
-        width:20rem;
-        margin-top: 10rem;
-        margin-left: 1rem;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 4;
+        grid-column-end: auto;
+        height:20vw;
+        width: 20vw;
+        margin-top: 40%;
+        justify-content: center;
         background-color:blanchedalmond;
-        background-position: center center;
+        background-size: contain;
     }
     .journal_page {
-        grid-column: 6/8;
-        grid-row: 2;
-        height: 60em;
-        width: 65em;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        height: 80vh;
         
         background-image: url($lib/img/journal.svg);
-        background-size: cover;
-        background-position: center bottom;
+        background-size: contain;
+        background-position: center;
         background-repeat: no-repeat;
         display: grid;
     }
