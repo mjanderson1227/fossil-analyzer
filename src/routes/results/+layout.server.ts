@@ -9,7 +9,6 @@ export async function load({cookies}: LoadCookies): Promise<ModelResponse> {
 	const cookieString = cookies.get('server_data');
 
 	if (!cookieString) {
-		console.log("No cookie found");
 		redirect(303, "/");
 	}
 

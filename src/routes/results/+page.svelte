@@ -17,16 +17,8 @@
     </div>
 </div>
 
-<div class="wrapper">
-    <div class="logo"></div>
-    <div class="header"><h1><strong>What the Dino?!</strong></h1></div>
-    <div class="guesses"></div>
-    <div class="journal-page"></div>
-</div>
-
 <style>
-    :global(body){
-
+    :global(body) {
         display: flex;
         align-items: left;
         justify-content: center;
@@ -41,14 +33,10 @@
     }
     .wrapper {
         display: grid;
-        
-
-       
-        
     }
     .logo {
         grid-column: 1;
-        grid-row:1;
+        grid-row: 1;
         height: 10vh;
         width: 10vh;
         margin-left: 2vw;
@@ -59,8 +47,9 @@
         background-repeat: no-repeat;
     }
     .header {
+        font-family: "Press Start 2P";
         grid-column: 2;
-        grid-row:1;
+        grid-row: 1;
         vertical-align: center;
     }
     .guesses {
@@ -68,11 +57,11 @@
         grid-row-end: 4;
         grid-column-start: 4;
         grid-column-end: auto;
-        height:20vw;
+        height: 20vw;
         width: 20vw;
         margin-top: 40%;
         justify-content: center;
-        background-color:blanchedalmond;
+        background-color: blanchedalmond;
         background-size: contain;
     }
     .journal_page {
@@ -80,7 +69,7 @@
         grid-column-end: 4;
         grid-row-start: 2;
         height: 80vh;
-        
+
         background-image: url($lib/img/journal.svg);
         background-size: contain;
         background-position: center;
