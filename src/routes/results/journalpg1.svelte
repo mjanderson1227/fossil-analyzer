@@ -10,6 +10,11 @@
 </div>
 <div class="page">
     <div class="aiWords">A Velociraptor vertebrae is a fascinating fossilized bone that provides valuable insights into the anatomy and biology of these ancient predators. The vertebrae are characterized by their distinctive, knobbed ends and the presence of parallel ridges on their surface, which were likely used for attachment of muscles and other tissues.</div> 
+    <ul class="replies">
+        <li>Examining vertebrae morphology to determine age of Velociraptor?</li>
+        <li>Advanced senses in Velociraptor?</li>
+        <li>Raptor vertebrae with other dinos?</li>
+    </ul>
 </div>
 </div>
 
@@ -41,6 +46,15 @@
     max-width: 85%;
     font-size: 1.25rem;
     font-family:'Delicious Handrawn'
+ }
+ .replies{
+    color: blue;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-family:'Delicious Handrawn';
+    margin-left: -25%;
+    max-width: 80%;
+    
  }
 
 </style>
