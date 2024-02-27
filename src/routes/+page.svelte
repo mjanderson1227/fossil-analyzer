@@ -1,6 +1,6 @@
 <script lang="ts">
     import bonefile from "$lib/img/bonefile.svg";
-    import { goto } from "$app/navigation";
+    import {goto} from "$app/navigation";
 
     // import { onMount } from "svelte";
 
@@ -25,6 +25,7 @@
                     img: image,
                 }),
             });
+            goto("/results");
         };
     }
 
@@ -117,7 +118,6 @@
             document.cookie = "";
             await handleImageSubmit(fileinput.files);
             avatar = "";
-            goto("/results");
         }}>Analyze Fossil!</button
     >
 </div>

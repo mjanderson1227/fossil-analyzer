@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+      "dotenv": "^16.4.5",
 		"flowbite-svelte": "^0.44.24",
 		"svelte-materialify": "^0.3.11"
 	}

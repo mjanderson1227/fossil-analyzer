@@ -16,3 +16,11 @@ export type ModelResponse = {
 	},
 	session: string,
 }
+
+export type ChatResponse = {
+	summary: string,
+	followup0: string,
+	followup1: string,
+	followup2: string,
+	answer: string
+}

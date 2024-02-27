@@ -1,33 +1,35 @@
 <script lang="ts">
-    import type { ModelResponse } from "./types";
-    import { onMount } from "svelte";
-
+    import type {ModelResponse} from "./types";
+    import {onMount} from "svelte";
+    import Guesses from "./guesses.svelte";
+    import Pg1 from "./journalpg1.svelte";
     // Variable is loaded from the server
     export let data: ModelResponse;
 
     onMount(() => {
         console.log(data);
     });
-
-    import Guesses from "./guesses.svelte";
-    import Pg1 from "./journalpg1.svelte";
 </script>
 
 <svelte:head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
     <link
-        href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap"
-        rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap"
+            rel="stylesheet"
     />
 </svelte:head>
 
 <div class="wrapper">
     <div class="logo"></div>
     <div class="header"><h1><strong>What the Dino?!</strong></h1></div>
-    <div class="guesses"><Guesses listData={data} /></div>
+    <div class="guesses">
+        <Guesses listData={data}/>
+    </div>
     <div class="journal_page">
-        <div class="pg1"><Pg1 /></div>
+        <div class="pg1">
+            <Pg1 listData={data}/>
+        </div>
     </div>
 </div>
 
@@ -45,9 +47,11 @@
         background-position: center bottom;
         background-repeat: no-repeat;
     }
+
     .wrapper {
         display: grid;
     }
+
     .logo {
         grid-column: 1;
         grid-row: 1;
@@ -60,12 +64,14 @@
         background-position: center center;
         background-repeat: no-repeat;
     }
+
     .header {
         font-family: "Press Start 2P";
         grid-column: 2;
         grid-row: 1;
         vertical-align: center;
     }
+
     .guesses {
         grid-row-start: 2;
         grid-row-end: 4;
@@ -78,6 +84,7 @@
         background-color: blanchedalmond;
         background-size: contain;
     }
+
     .journal_page {
         grid-column-start: 1;
         grid-column-end: 4;

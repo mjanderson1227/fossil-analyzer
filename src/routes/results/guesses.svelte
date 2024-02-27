@@ -1,8 +1,7 @@
 <script lang="ts">
-    import type { ModelResponse } from "./types";
+    import type {ModelResponse} from "./types";
 
     export let listData: ModelResponse;
-
     const values: any = Object.values(listData).slice(0, 3);
 </script>
 
@@ -19,20 +18,20 @@
     <div class="head">Results:</div>
     {#each values as entry}
         {entry.species}
-        {entry.bone}<br /><center>{Math.floor(entry.score * 100)}% match</center
-        >
+        {entry.bone}<br/>
+        <center>{Math.floor(entry.score * 100)}% match</center>
     {/each}
 </sticky>
 
 <style>
     .head {
-        font-size: 3rem;
+        font-size: 5vh;
         text-align: center;
     }
 
     .guesses {
         font-family: "Delicious Handrawn";
-        font-size: 2rem;
+        font-size: 3.5vh;
         list-style-type: circle;
         text-align: left;
     }
